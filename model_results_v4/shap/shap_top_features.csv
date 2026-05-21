@@ -1,0 +1,121 @@
+class,rank,feature,mean_abs_shap
+high credibility,1,media_type_website,0.89789724
+high credibility,2,media_type_newspaper,0.6261215
+high credibility,3,num_lists,0.45610577
+high credibility,4,ad_iframe_count,0.43110234
+high credibility,5,interact_low_text_high_ads,0.29595184
+high credibility,6,country_usa,0.26363203
+high credibility,7,traffic_minimal_traffic,0.22948019
+high credibility,8,num_links_external,0.21886513
+high credibility,9,css_max_selector_length,0.20709914
+high credibility,10,ratio_images_per_1k_words,0.19697641
+high credibility,11,css_avg_selector_length,0.19394869
+high credibility,12,ratio_empty_links,0.18278459
+high credibility,13,num_stylesheets,0.17827912
+high credibility,14,has_privacy_policy_link,0.17559014
+high credibility,15,num_iframes,0.16771796
+high credibility,16,log_total_tags,0.16309822
+high credibility,17,num_links_nofollow,0.1602668
+high credibility,18,meta_tag_count,0.1553877
+high credibility,19,log_num_spans,0.15364327
+high credibility,20,css_num_class_selectors,0.1468306
+high credibility,21,has_about_page_link,0.14145441
+high credibility,22,complexity_score,0.13835466
+high credibility,23,third_party_script_domains,0.13566118
+high credibility,24,css_num_id_selectors,0.13421525
+high credibility,25,ratio_iframes_per_tag,0.1331611
+high credibility,26,social_media_link_count,0.13150041
+high credibility,27,num_forms,0.13053268
+high credibility,28,avg_word_length,0.13008489
+high credibility,29,traffic_medium_traffic,0.126515
+high credibility,30,interact_ads_x_hidden,0.12491353
+low credibility,1,media_type_newspaper,0.72668
+low credibility,2,meta_tag_count,0.50078505
+low credibility,3,country_usa,0.45970356
+low credibility,4,media_type_website,0.42804348
+low credibility,5,css_num_colors,0.41467878
+low credibility,6,ext_css_num_font_weight_bold,0.4005608
+low credibility,7,log_num_divs,0.38192475
+low credibility,8,num_links_nofollow,0.33263215
+low credibility,9,media_type_organization_foundation,0.33030036
+low credibility,10,ext_css_num_colors,0.32228598
+low credibility,11,num_paragraphs,0.3169033
+low credibility,12,ext_css_has_reset,0.31224048
+low credibility,13,complexity_score,0.29630646
+low credibility,14,ad_iframe_count,0.27705055
+low credibility,15,log_ad_keyword_count,0.23343536
+low credibility,16,has_about_page_link,0.22944078
+low credibility,17,ext_css_avg_selector_length,0.22939032
+low credibility,18,inline_script_count,0.22506739
+low credibility,19,ext_css_uses_web_fonts,0.22412618
+low credibility,20,hidden_element_count,0.22368851
+low credibility,21,clickbait_question_headlines,0.22116688
+low credibility,22,css_has_position_fixed,0.20997168
+low credibility,23,ratio_iframes_per_tag,0.20736043
+low credibility,24,external_script_count,0.20330374
+low credibility,25,word_count,0.20071636
+low credibility,26,log_css_total_length,0.19917618
+low credibility,27,avg_word_length,0.19556741
+low credibility,28,ratio_popups_per_tag,0.19537811
+low credibility,29,traffic_medium_traffic,0.1916078
+low credibility,30,css_uses_universal_selector,0.19043414
+medium credibility,1,media_type_website,0.45470512
+medium credibility,2,css_num_colors,0.29894295
+medium credibility,3,inline_script_count,0.29187384
+medium credibility,4,social_media_link_count,0.29104728
+medium credibility,5,css_num_css_variables,0.24947597
+medium credibility,6,meta_tag_count,0.23268181
+medium credibility,7,ext_css_uses_web_fonts,0.21535082
+medium credibility,8,trust_score,0.20342143
+medium credibility,9,hidden_element_count,0.19758485
+medium credibility,10,avg_word_length,0.19290988
+medium credibility,11,ext_css_num_colors,0.1916366
+medium credibility,12,ext_css_num_font_weight_bold,0.18795602
+medium credibility,13,num_images,0.18680878
+medium credibility,14,complexity_score,0.17278533
+medium credibility,15,log_num_spans,0.16827327
+medium credibility,16,max_dom_depth,0.1675798
+medium credibility,17,num_links_nofollow,0.15548919
+medium credibility,18,ext_css_num_css_variables,0.15404183
+medium credibility,19,num_divs,0.15249744
+medium credibility,20,ad_iframe_count,0.15150115
+medium credibility,21,traffic_medium_traffic,0.14345007
+medium credibility,22,media_type_organization_foundation,0.1395031
+medium credibility,23,log_total_tags,0.12734108
+medium credibility,24,log_num_divs,0.1266944
+medium credibility,25,has_about_page_link,0.12247346
+medium credibility,26,ext_css_has_reset,0.12155809
+medium credibility,27,ratio_popups_per_tag,0.120955616
+medium credibility,28,css_num_selectors,0.118150294
+medium credibility,29,media_type_newspaper,0.11614607
+medium credibility,30,log_ad_keyword_count,0.11249401
+OVERALL,1,media_type_website,0.5935486
+OVERALL,2,media_type_newspaper,0.4896492
+OVERALL,3,meta_tag_count,0.29628485
+OVERALL,4,ad_iframe_count,0.28655136
+OVERALL,5,country_usa,0.254288
+OVERALL,6,css_num_colors,0.24827297
+OVERALL,7,ext_css_num_font_weight_bold,0.21652205
+OVERALL,8,num_links_nofollow,0.21612938
+OVERALL,9,num_lists,0.21465458
+OVERALL,10,complexity_score,0.20248215
+OVERALL,11,social_media_link_count,0.1950726
+OVERALL,12,inline_script_count,0.19264312
+OVERALL,13,log_num_divs,0.18913673
+OVERALL,14,ext_css_num_colors,0.18405448
+OVERALL,15,hidden_element_count,0.18061078
+OVERALL,16,media_type_organization_foundation,0.17517687
+OVERALL,17,avg_word_length,0.17285407
+OVERALL,18,num_paragraphs,0.17163445
+OVERALL,19,css_num_css_variables,0.16895741
+OVERALL,20,interact_low_text_high_ads,0.16464151
+OVERALL,21,has_about_page_link,0.16445623
+OVERALL,22,ext_css_uses_web_fonts,0.16029167
+OVERALL,23,log_num_spans,0.15547247
+OVERALL,24,traffic_medium_traffic,0.15385763
+OVERALL,25,trust_score,0.15308177
+OVERALL,26,num_divs,0.14969596
+OVERALL,27,ratio_popups_per_tag,0.14705975
+OVERALL,28,ext_css_has_reset,0.14700013
+OVERALL,29,ratio_iframes_per_tag,0.14426872
+OVERALL,30,num_links_external,0.14209352
