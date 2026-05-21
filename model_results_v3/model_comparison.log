@@ -1,0 +1,248 @@
+2026-04-09 12:57:48,391 [INFO] Model comparison pipeline started at 20260409_125748
+2026-04-09 12:57:48,391 [INFO] Config: {
+  "data_dir": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)",
+  "html_front_dir": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)\\html_front",
+  "css_front_dir": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)\\css_front",
+  "mbfc_json_path": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)\\results_expanded.json",
+  "enriched_csv": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)\\thesis_output\\low_cred_features_latest.csv",
+  "output_dir": "C:\\Users\\Wilbe\\OneDrive\\Desktop\\profiling-data-Copy(1)\\thesis_output\\model_results_v3",
+  "n_folds": 5,
+  "random_state": 42
+}
+2026-04-09 12:57:48,392 [INFO] Loading MBFC metadata from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\results_expanded.json
+2026-04-09 12:57:48,452 [INFO] Built metadata lookup for 11648 domains
+2026-04-09 12:57:48,541 [INFO] Scanning 2937 CSS files...
+2026-04-09 13:08:02,623 [INFO] Real CSS files: 2377, HTML error pages skipped: 560
+2026-04-09 13:08:02,624 [INFO] 
+Building baseline dataset from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\html_front
+2026-04-09 13:08:02,797 [INFO] Found 4189 HTML files
+2026-04-09 14:20:50,266 [INFO] Baseline: extracted features from 3779 sources (410 skipped)
+2026-04-09 14:20:50,268 [INFO]   high credibility: 3232
+2026-04-09 14:20:50,269 [INFO]   medium credibility: 540
+2026-04-09 14:20:50,269 [INFO]   low credibility: 7
+2026-04-09 14:20:50,441 [INFO] 
+Feature columns (190): ['total_tags', 'unique_tags', 'html_length', 'text_length', 'text_to_html_ratio', 'num_divs', 'num_spans', 'num_tables', 'num_forms', 'num_inputs']...
+2026-04-09 14:20:50,442 [INFO] 
+Loading enriched low-cred data from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\low_cred_features_latest.csv
+2026-04-09 14:20:50,461 [INFO] Loaded 163 enriched low-credibility sources
+2026-04-09 14:20:50,470 [INFO] Found 160 saved HTML files for CSS re-extraction
+2026-04-09 14:36:04,892 [INFO] Re-extracted CSS features from 160/163 saved HTML files
+2026-04-09 14:36:04,900 [INFO] Added MBFC metadata + n-gram + CSS features to enriched data (117 new columns)
+2026-04-09 14:36:04,900 [INFO] Common features: 192
+2026-04-09 14:36:04,901 [INFO] Shared numeric features for modelling: 190
+2026-04-09 14:36:04,923 [INFO] 
+Enriched dataset total: 3942
+2026-04-09 14:36:04,924 [INFO]   high credibility: 3232
+2026-04-09 14:36:04,924 [INFO]   medium credibility: 540
+2026-04-09 14:36:04,924 [INFO]   low credibility: 170
+2026-04-09 14:36:04,926 [INFO] Shared features for all experiments: 190
+2026-04-09 14:36:04,926 [INFO] 
+============================================================
+2026-04-09 14:36:04,926 [INFO] EXPERIMENT: Baseline
+2026-04-09 14:36:04,926 [INFO] ============================================================
+2026-04-09 14:36:04,926 [INFO] Samples: 3779, Features: 190
+2026-04-09 14:36:04,942 [INFO] Feature engineering: 190 -> 225 features (+35 derived)
+2026-04-09 14:36:04,947 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(7), 'medium credibility': np.int64(540)}
+2026-04-09 14:36:04,957 [INFO] Feature selection: 225 -> 135 features
+2026-04-09 14:36:04,958 [INFO] 
+  Tuning RF with Optuna (50 trials)...
+2026-04-09 14:38:12,276 [INFO]   Best RF params: {'n_estimators': 150, 'max_depth': 36, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 0.6885975294667056} (CV score: 0.4021)
+2026-04-09 14:38:12,276 [INFO]   Tuning XGB with Optuna (50 trials)...
+2026-04-09 14:40:06,981 [INFO]   Best XGB params: {'n_estimators': 700, 'max_depth': 10, 'learning_rate': 0.2994704609612112, 'subsample': 0.5624340626795712, 'colsample_bytree': 0.7115281822999413, 'min_child_weight': 5, 'gamma': 0.5375163715589254, 'reg_alpha': 0.0001262301532852598, 'reg_lambda': 0.001805253162810078} (CV score: 0.6006)
+2026-04-09 14:40:06,981 [INFO] 
+  Running: RF_no_balance...
+2026-04-09 14:40:09,828 [INFO]     Macro F1: 0.4080 (±0.0169)
+2026-04-09 14:40:09,828 [INFO]     high F1: 0.9263
+2026-04-09 14:40:09,828 [INFO]     low F1: 0.0000
+2026-04-09 14:40:09,828 [INFO]     medium F1: 0.2990
+2026-04-09 14:40:10,536 [INFO] 
+  Running: XGB_no_balance...
+2026-04-09 14:40:14,164 [INFO]     Macro F1: 0.4361 (±0.0106)
+2026-04-09 14:40:14,164 [INFO]     high F1: 0.9208
+2026-04-09 14:40:14,164 [INFO]     low F1: 0.0000
+2026-04-09 14:40:14,164 [INFO]     medium F1: 0.3874
+2026-04-09 14:40:14,364 [INFO] 
+  Running: RF_SMOTE...
+2026-04-09 14:40:19,028 [WARNING]     SMOTE failed on fold 2: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:19,579 [WARNING]     SMOTE failed on fold 3: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:21,871 [INFO]     Macro F1: 0.4749 (±0.1021)
+2026-04-09 14:40:21,872 [INFO]     high F1: 0.9192
+2026-04-09 14:40:21,872 [INFO]     low F1: 0.2222
+2026-04-09 14:40:21,872 [INFO]     medium F1: 0.3815
+2026-04-09 14:40:22,031 [INFO] 
+  Running: XGB_SMOTE...
+2026-04-09 14:40:25,983 [WARNING]     SMOTE failed on fold 2: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:26,738 [WARNING]     SMOTE failed on fold 3: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:29,067 [INFO]     Macro F1: 0.4348 (±0.0081)
+2026-04-09 14:40:29,067 [INFO]     high F1: 0.9171
+2026-04-09 14:40:29,067 [INFO]     low F1: 0.0000
+2026-04-09 14:40:29,068 [INFO]     medium F1: 0.3879
+2026-04-09 14:40:29,220 [INFO] 
+  Running: RF_class_weights...
+2026-04-09 14:40:31,854 [INFO]     Macro F1: 0.4291 (±0.0653)
+2026-04-09 14:40:31,854 [INFO]     high F1: 0.9255
+2026-04-09 14:40:31,855 [INFO]     low F1: 0.2222
+2026-04-09 14:40:31,855 [INFO]     medium F1: 0.2653
+2026-04-09 14:40:32,002 [INFO] 
+  Running: XGB_class_weights...
+2026-04-09 14:40:35,687 [INFO]     Macro F1: 0.5493 (±0.0801)
+2026-04-09 14:40:35,687 [INFO]     high F1: 0.9077
+2026-04-09 14:40:35,687 [INFO]     low F1: 0.4000
+2026-04-09 14:40:35,687 [INFO]     medium F1: 0.4607
+2026-04-09 14:40:35,841 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-04-09 14:40:38,924 [WARNING]     SMOTE failed on fold 2: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:39,405 [WARNING]     SMOTE failed on fold 3: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:41,406 [INFO]     Macro F1: 0.5059 (±0.0963)
+2026-04-09 14:40:41,406 [INFO]     high F1: 0.9196
+2026-04-09 14:40:41,406 [INFO]     low F1: 0.3636
+2026-04-09 14:40:41,406 [INFO]     medium F1: 0.3766
+2026-04-09 14:40:41,543 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-04-09 14:40:45,672 [WARNING]     SMOTE failed on fold 2: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:46,375 [WARNING]     SMOTE failed on fold 3: Expected n_neighbors <= n_samples_fit, but n_neighbors = 6, n_samples_fit = 5, n_samples = 5
+2026-04-09 14:40:48,839 [INFO]     Macro F1: 0.5043 (±0.0820)
+2026-04-09 14:40:48,840 [INFO]     high F1: 0.9005
+2026-04-09 14:40:48,840 [INFO]     low F1: 0.2222
+2026-04-09 14:40:48,840 [INFO]     medium F1: 0.4323
+2026-04-09 14:40:48,989 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-04-09 14:41:06,771 [INFO]     Macro F1: 0.5248
+2026-04-09 14:41:06,772 [INFO]     high F1: 0.9152
+2026-04-09 14:41:06,772 [INFO]     low F1: 0.2667
+2026-04-09 14:41:06,772 [INFO]     medium F1: 0.3926
+2026-04-09 14:41:06,913 [INFO] 
+============================================================
+2026-04-09 14:41:06,913 [INFO] EXPERIMENT: Enriched
+2026-04-09 14:41:06,914 [INFO] ============================================================
+2026-04-09 14:41:06,914 [INFO] Samples: 3942, Features: 190
+2026-04-09 14:41:06,944 [INFO] Feature engineering: 190 -> 225 features (+35 derived)
+2026-04-09 14:41:06,948 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-04-09 14:41:06,962 [INFO] Feature selection: 225 -> 135 features
+2026-04-09 14:41:06,962 [INFO] 
+  Tuning RF with Optuna (50 trials)...
+2026-04-09 14:47:26,654 [INFO]   Best RF params: {'n_estimators': 600, 'max_depth': 21, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 0.7284165792615441} (CV score: 0.5132)
+2026-04-09 14:47:26,654 [INFO]   Tuning XGB with Optuna (50 trials)...
+2026-04-09 14:49:25,860 [INFO]   Best XGB params: {'n_estimators': 600, 'max_depth': 3, 'learning_rate': 0.2652261985899886, 'subsample': 0.9162213204002109, 'colsample_bytree': 0.44863737747479326, 'min_child_weight': 2, 'gamma': 0.18340450985343382, 'reg_alpha': 5.472429642032198e-06, 'reg_lambda': 0.00052821153945323} (CV score: 0.5548)
+2026-04-09 14:49:25,860 [INFO] 
+  Running: RF_no_balance...
+2026-04-09 14:49:38,295 [INFO]     Macro F1: 0.5100 (±0.0434)
+2026-04-09 14:49:38,295 [INFO]     high F1: 0.9138
+2026-04-09 14:49:38,296 [INFO]     low F1: 0.3153
+2026-04-09 14:49:38,296 [INFO]     medium F1: 0.3066
+2026-04-09 14:49:38,460 [INFO] 
+  Running: XGB_no_balance...
+2026-04-09 14:49:41,819 [INFO]     Macro F1: 0.5710 (±0.0345)
+2026-04-09 14:49:41,819 [INFO]     high F1: 0.9111
+2026-04-09 14:49:41,819 [INFO]     low F1: 0.4247
+2026-04-09 14:49:41,820 [INFO]     medium F1: 0.3817
+2026-04-09 14:49:41,995 [INFO] 
+  Running: RF_SMOTE...
+2026-04-09 14:50:21,658 [INFO]     Macro F1: 0.5800 (±0.0264)
+2026-04-09 14:50:21,658 [INFO]     high F1: 0.8978
+2026-04-09 14:50:21,659 [INFO]     low F1: 0.4157
+2026-04-09 14:50:21,659 [INFO]     medium F1: 0.4249
+2026-04-09 14:50:21,771 [INFO] 
+  Running: XGB_SMOTE...
+2026-04-09 14:50:28,137 [INFO]     Macro F1: 0.5879 (±0.0404)
+2026-04-09 14:50:28,137 [INFO]     high F1: 0.9094
+2026-04-09 14:50:28,137 [INFO]     low F1: 0.4530
+2026-04-09 14:50:28,137 [INFO]     medium F1: 0.4079
+2026-04-09 14:50:28,271 [INFO] 
+  Running: RF_class_weights...
+2026-04-09 14:50:37,203 [INFO]     Macro F1: 0.4930 (±0.0281)
+2026-04-09 14:50:37,203 [INFO]     high F1: 0.9092
+2026-04-09 14:50:37,203 [INFO]     low F1: 0.3248
+2026-04-09 14:50:37,203 [INFO]     medium F1: 0.2496
+2026-04-09 14:50:37,321 [INFO] 
+  Running: XGB_class_weights...
+2026-04-09 14:50:40,283 [INFO]     Macro F1: 0.5898 (±0.0318)
+2026-04-09 14:50:40,283 [INFO]     high F1: 0.9019
+2026-04-09 14:50:40,283 [INFO]     low F1: 0.4367
+2026-04-09 14:50:40,283 [INFO]     medium F1: 0.4346
+2026-04-09 14:50:40,432 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-04-09 14:53:28,672 [INFO]     Macro F1: 0.5800 (±0.0264)
+2026-04-09 14:53:28,672 [INFO]     high F1: 0.8978
+2026-04-09 14:53:28,673 [INFO]     low F1: 0.4157
+2026-04-09 14:53:28,673 [INFO]     medium F1: 0.4249
+2026-04-09 14:53:28,799 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-04-09 14:53:36,197 [INFO]     Macro F1: 0.5940 (±0.0202)
+2026-04-09 14:53:36,197 [INFO]     high F1: 0.8974
+2026-04-09 14:53:36,197 [INFO]     low F1: 0.4583
+2026-04-09 14:53:36,197 [INFO]     medium F1: 0.4265
+2026-04-09 14:53:36,330 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-04-09 14:54:22,020 [INFO]     Macro F1: 0.5889
+2026-04-09 14:54:22,020 [INFO]     high F1: 0.9120
+2026-04-09 14:54:22,020 [INFO]     low F1: 0.4458
+2026-04-09 14:54:22,021 [INFO]     medium F1: 0.4088
+2026-04-09 14:54:22,154 [INFO] 
+================================================================================
+2026-04-09 14:54:22,154 [INFO] RESULTS SUMMARY
+2026-04-09 14:54:22,154 [INFO] ================================================================================
+2026-04-09 14:54:22,158 [INFO] 
+ dataset             model  macro_f1_mean  macro_f1_std  accuracy  f1_high  f1_low  f1_medium
+Baseline     RF_no_balance         0.4080        0.0169    0.8664   0.9263  0.0000     0.2990
+Baseline    XGB_no_balance         0.4361        0.0106    0.8592   0.9208  0.0000     0.3874
+Baseline          RF_SMOTE         0.4749        0.1021    0.8568   0.9192  0.2222     0.3815
+Baseline         XGB_SMOTE         0.4348        0.0081    0.8534   0.9171  0.0000     0.3879
+Baseline  RF_class_weights         0.4291        0.0653    0.8648   0.9255  0.2222     0.2653
+Baseline XGB_class_weights         0.5493        0.0801    0.8420   0.9077  0.4000     0.4607
+Baseline  RF_SMOTE_weights         0.5059        0.0963    0.8574   0.9196  0.3636     0.3766
+Baseline XGB_SMOTE_weights         0.5043        0.0820    0.8298   0.9005  0.2222     0.4323
+Baseline   Stacking_RF_XGB         0.5248        0.0000    0.8505   0.9152  0.2667     0.3926
+Enriched     RF_no_balance         0.5100        0.0434    0.8412   0.9138  0.3153     0.3066
+Enriched    XGB_no_balance         0.5710        0.0345    0.8364   0.9111  0.4247     0.3817
+Enriched          RF_SMOTE         0.5800        0.0264    0.8120   0.8978  0.4157     0.4249
+Enriched         XGB_SMOTE         0.5879        0.0404    0.8351   0.9094  0.4530     0.4079
+Enriched  RF_class_weights         0.4930        0.0281    0.8349   0.9092  0.3248     0.2496
+Enriched XGB_class_weights         0.5898        0.0318    0.8189   0.9019  0.4367     0.4346
+Enriched  RF_SMOTE_weights         0.5800        0.0264    0.8120   0.8978  0.4157     0.4249
+Enriched XGB_SMOTE_weights         0.5940        0.0202    0.8120   0.8974  0.4583     0.4265
+Enriched   Stacking_RF_XGB         0.5889        0.0000    0.8349   0.9120  0.4458     0.4088
+2026-04-09 14:54:22,497 [INFO] Saved comparison figures to C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v3
+2026-04-09 14:54:22,497 [INFO] 
+============================================================
+2026-04-09 14:54:22,497 [INFO] IMPROVEMENT ANALYSIS
+2026-04-09 14:54:22,497 [INFO] ============================================================
+2026-04-09 14:54:22,499 [INFO] 
+  RF_no_balance:
+2026-04-09 14:54:22,499 [INFO]     Macro F1: 0.4080 -> 0.5100 (delta = +0.1021)
+2026-04-09 14:54:22,499 [INFO]     Low F1:   0.0000 -> 0.3153 (delta = +0.3153)
+2026-04-09 14:54:22,500 [INFO] 
+  XGB_no_balance:
+2026-04-09 14:54:22,500 [INFO]     Macro F1: 0.4361 -> 0.5710 (delta = +0.1350)
+2026-04-09 14:54:22,500 [INFO]     Low F1:   0.0000 -> 0.4247 (delta = +0.4247)
+2026-04-09 14:54:22,500 [INFO] 
+  RF_SMOTE:
+2026-04-09 14:54:22,500 [INFO]     Macro F1: 0.4749 -> 0.5800 (delta = +0.1051)
+2026-04-09 14:54:22,500 [INFO]     Low F1:   0.2222 -> 0.4157 (delta = +0.1934)
+2026-04-09 14:54:22,501 [INFO] 
+  XGB_SMOTE:
+2026-04-09 14:54:22,501 [INFO]     Macro F1: 0.4348 -> 0.5879 (delta = +0.1531)
+2026-04-09 14:54:22,501 [INFO]     Low F1:   0.0000 -> 0.4530 (delta = +0.4530)
+2026-04-09 14:54:22,502 [INFO] 
+  RF_class_weights:
+2026-04-09 14:54:22,502 [INFO]     Macro F1: 0.4291 -> 0.4930 (delta = +0.0639)
+2026-04-09 14:54:22,502 [INFO]     Low F1:   0.2222 -> 0.3248 (delta = +0.1026)
+2026-04-09 14:54:22,502 [INFO] 
+  XGB_class_weights:
+2026-04-09 14:54:22,503 [INFO]     Macro F1: 0.5493 -> 0.5898 (delta = +0.0405)
+2026-04-09 14:54:22,503 [INFO]     Low F1:   0.4000 -> 0.4367 (delta = +0.0367)
+2026-04-09 14:54:22,503 [INFO] 
+  RF_SMOTE_weights:
+2026-04-09 14:54:22,503 [INFO]     Macro F1: 0.5059 -> 0.5800 (delta = +0.0741)
+2026-04-09 14:54:22,504 [INFO]     Low F1:   0.3636 -> 0.4157 (delta = +0.0520)
+2026-04-09 14:54:22,504 [INFO] 
+  XGB_SMOTE_weights:
+2026-04-09 14:54:22,504 [INFO]     Macro F1: 0.5043 -> 0.5940 (delta = +0.0897)
+2026-04-09 14:54:22,504 [INFO]     Low F1:   0.2222 -> 0.4583 (delta = +0.2361)
+2026-04-09 14:54:22,505 [INFO] 
+  Stacking_RF_XGB:
+2026-04-09 14:54:22,505 [INFO]     Macro F1: 0.5248 -> 0.5889 (delta = +0.0641)
+2026-04-09 14:54:22,505 [INFO]     Low F1:   0.2667 -> 0.4458 (delta = +0.1792)
+2026-04-09 14:54:22,505 [INFO] 
+All results saved to: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v3
+2026-04-09 14:54:22,505 [INFO] Done!
