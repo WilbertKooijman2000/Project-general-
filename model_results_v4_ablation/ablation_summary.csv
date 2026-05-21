@@ -1,0 +1,4 @@
+tier,n_features_input,macro_f1,macro_f1_std,f1_high,f1_medium,f1_low,accuracy
+Full,190,0.594,0.0202,0.8974,0.4265,0.4583,0.812
+NoMBFC,164,0.5656,0.0179,0.8897,0.3911,0.4188,0.8026
+PureStructural,82,0.5608,0.021,0.8775,0.4238,0.3821,0.7869

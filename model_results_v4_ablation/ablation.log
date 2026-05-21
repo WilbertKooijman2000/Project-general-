@@ -1,0 +1,398 @@
+2026-05-20 15:58:18,721 [INFO] 
+Ablation pipeline started at 20260520_155818
+2026-05-20 15:58:18,721 [INFO] Output directory: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v4_ablation
+
+2026-05-20 15:58:18,721 [INFO] No cache found — building datasets from scratch (this takes a while)
+2026-05-20 15:58:18,721 [INFO] Loading MBFC metadata from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\results_expanded.json
+2026-05-20 15:58:18,778 [INFO] Built metadata lookup for 11648 domains
+2026-05-20 15:58:18,882 [INFO] Scanning 2937 CSS files...
+2026-05-20 16:09:15,135 [INFO] Real CSS files: 2377, HTML error pages skipped: 560
+2026-05-20 16:09:15,136 [INFO] 
+Building baseline dataset from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\html_front
+2026-05-20 16:09:15,285 [INFO] Found 4189 HTML files
+2026-05-20 17:16:56,602 [INFO] Baseline: extracted features from 3779 sources (410 skipped)
+2026-05-20 17:16:56,604 [INFO]   high credibility: 3232
+2026-05-20 17:16:56,604 [INFO]   medium credibility: 540
+2026-05-20 17:16:56,604 [INFO]   low credibility: 7
+2026-05-20 17:16:56,766 [INFO] 
+Loading enriched low-cred data from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\low_cred_features_latest.csv
+2026-05-20 17:16:56,792 [INFO] Loaded 163 enriched low-credibility sources
+2026-05-20 17:16:56,798 [INFO] Found 160 saved HTML files for CSS re-extraction
+2026-05-20 17:33:26,934 [INFO] Re-extracted CSS features from 160/163 saved HTML files
+2026-05-20 17:33:26,938 [INFO] Added MBFC metadata + n-gram + CSS features to enriched data (117 new columns)
+2026-05-20 17:33:26,939 [INFO] Common features: 192
+2026-05-20 17:33:26,939 [INFO] Shared numeric features for modelling: 190
+2026-05-20 17:33:26,957 [INFO] 
+Enriched dataset total: 3942
+2026-05-20 17:33:26,958 [INFO]   high credibility: 3232
+2026-05-20 17:33:26,958 [INFO]   medium credibility: 540
+2026-05-20 17:33:26,958 [INFO]   low credibility: 170
+2026-05-20 17:33:26,965 [INFO] Cached enriched data (3942 rows, 190 shared features) -> C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v4_ablation\data_cache.pkl
+2026-05-20 17:33:26,973 [INFO] Full shared feature pool: 190 features
+2026-05-20 17:33:26,973 [INFO] 
+================================================================================
+2026-05-20 17:33:26,974 [INFO] TIER: Full
+2026-05-20 17:33:26,974 [INFO] ================================================================================
+2026-05-20 17:33:26,974 [INFO] Kept 190 / 190 features (0 dropped)
+2026-05-20 17:33:26,984 [INFO] 
+============================================================
+2026-05-20 17:33:26,984 [INFO] EXPERIMENT: Ablation_Full
+2026-05-20 17:33:26,985 [INFO] ============================================================
+2026-05-20 17:33:26,985 [INFO] Samples: 3942, Features: 190
+2026-05-20 17:33:27,002 [INFO] Feature engineering: 190 -> 225 features (+35 derived)
+2026-05-20 17:33:27,006 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-05-20 17:33:27,016 [INFO] Feature selection: 225 -> 135 features
+2026-05-20 17:33:27,017 [INFO] 
+  Tuning RF with Optuna (50 trials)...
+2026-05-20 17:36:31,394 [INFO]   Best RF params: {'n_estimators': 600, 'max_depth': 21, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 0.7284165792615441} (CV score: 0.5132)
+2026-05-20 17:36:31,394 [INFO]   Tuning XGB with Optuna (50 trials)...
+2026-05-20 17:38:35,372 [INFO]   Best XGB params: {'n_estimators': 600, 'max_depth': 3, 'learning_rate': 0.2652261985899886, 'subsample': 0.9162213204002109, 'colsample_bytree': 0.44863737747479326, 'min_child_weight': 2, 'gamma': 0.18340450985343382, 'reg_alpha': 5.472429642032198e-06, 'reg_lambda': 0.00052821153945323} (CV score: 0.5548)
+2026-05-20 17:38:35,382 [INFO] 
+  Running: RF_no_balance...
+2026-05-20 17:38:46,841 [INFO]     Macro F1: 0.5100 (+/- 0.0434)
+2026-05-20 17:38:46,841 [INFO]     high F1: 0.9138
+2026-05-20 17:38:46,841 [INFO]     low F1: 0.3153
+2026-05-20 17:38:46,841 [INFO]     medium F1: 0.3066
+2026-05-20 17:38:47,559 [INFO] 
+  Running: XGB_no_balance...
+2026-05-20 17:38:50,626 [INFO]     Macro F1: 0.5710 (+/- 0.0345)
+2026-05-20 17:38:50,627 [INFO]     high F1: 0.9111
+2026-05-20 17:38:50,627 [INFO]     low F1: 0.4247
+2026-05-20 17:38:50,627 [INFO]     medium F1: 0.3817
+2026-05-20 17:38:50,785 [INFO] 
+  Running: RF_SMOTE...
+2026-05-20 17:39:31,373 [INFO]     Macro F1: 0.5800 (+/- 0.0264)
+2026-05-20 17:39:31,374 [INFO]     high F1: 0.8978
+2026-05-20 17:39:31,374 [INFO]     low F1: 0.4157
+2026-05-20 17:39:31,374 [INFO]     medium F1: 0.4249
+2026-05-20 17:39:31,576 [INFO] 
+  Running: XGB_SMOTE...
+2026-05-20 17:39:37,998 [INFO]     Macro F1: 0.5879 (+/- 0.0404)
+2026-05-20 17:39:37,999 [INFO]     high F1: 0.9094
+2026-05-20 17:39:37,999 [INFO]     low F1: 0.4530
+2026-05-20 17:39:37,999 [INFO]     medium F1: 0.4079
+2026-05-20 17:39:38,178 [INFO] 
+  Running: RF_class_weights...
+2026-05-20 17:39:47,176 [INFO]     Macro F1: 0.4930 (+/- 0.0281)
+2026-05-20 17:39:47,176 [INFO]     high F1: 0.9092
+2026-05-20 17:39:47,177 [INFO]     low F1: 0.3248
+2026-05-20 17:39:47,177 [INFO]     medium F1: 0.2496
+2026-05-20 17:39:47,376 [INFO] 
+  Running: XGB_class_weights...
+2026-05-20 17:39:50,451 [INFO]     Macro F1: 0.5898 (+/- 0.0318)
+2026-05-20 17:39:50,451 [INFO]     high F1: 0.9019
+2026-05-20 17:39:50,451 [INFO]     low F1: 0.4367
+2026-05-20 17:39:50,451 [INFO]     medium F1: 0.4346
+2026-05-20 17:39:50,670 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-05-20 17:40:29,276 [INFO]     Macro F1: 0.5800 (+/- 0.0264)
+2026-05-20 17:40:29,276 [INFO]     high F1: 0.8978
+2026-05-20 17:40:29,276 [INFO]     low F1: 0.4157
+2026-05-20 17:40:29,277 [INFO]     medium F1: 0.4249
+2026-05-20 17:40:29,412 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-05-20 17:40:36,170 [INFO]     Macro F1: 0.5940 (+/- 0.0202)
+2026-05-20 17:40:36,170 [INFO]     high F1: 0.8974
+2026-05-20 17:40:36,171 [INFO]     low F1: 0.4583
+2026-05-20 17:40:36,171 [INFO]     medium F1: 0.4265
+2026-05-20 17:40:36,345 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-05-20 17:41:22,515 [INFO]     Macro F1: 0.5889
+2026-05-20 17:41:22,515 [INFO]     high F1: 0.9120
+2026-05-20 17:41:22,515 [INFO]     low F1: 0.4458
+2026-05-20 17:41:22,515 [INFO]     medium F1: 0.4088
+2026-05-20 17:41:22,747 [INFO] 
+================================================================================
+2026-05-20 17:41:22,747 [INFO] TIER: NoMBFC
+2026-05-20 17:41:22,748 [INFO] ================================================================================
+2026-05-20 17:41:22,748 [INFO] Kept 164 / 190 features (26 dropped)
+2026-05-20 17:41:22,748 [INFO] Dropped features:
+2026-05-20 17:41:22,748 [INFO]    - country_australia
+2026-05-20 17:41:22,748 [INFO]    - country_canada
+2026-05-20 17:41:22,748 [INFO]    - country_france
+2026-05-20 17:41:22,748 [INFO]    - country_germany
+2026-05-20 17:41:22,748 [INFO]    - country_india
+2026-05-20 17:41:22,749 [INFO]    - country_ireland
+2026-05-20 17:41:22,749 [INFO]    - country_israel
+2026-05-20 17:41:22,749 [INFO]    - country_italy
+2026-05-20 17:41:22,749 [INFO]    - country_netherlands
+2026-05-20 17:41:22,749 [INFO]    - country_other
+2026-05-20 17:41:22,749 [INFO]    - country_russia
+2026-05-20 17:41:22,749 [INFO]    - country_turkey
+2026-05-20 17:41:22,749 [INFO]    - country_uk
+2026-05-20 17:41:22,749 [INFO]    - country_usa
+2026-05-20 17:41:22,749 [INFO]    - media_type_magazine
+2026-05-20 17:41:22,749 [INFO]    - media_type_news_agency
+2026-05-20 17:41:22,750 [INFO]    - media_type_newspaper
+2026-05-20 17:41:22,750 [INFO]    - media_type_organization_foundation
+2026-05-20 17:41:22,750 [INFO]    - media_type_other
+2026-05-20 17:41:22,750 [INFO]    - media_type_radio_station
+2026-05-20 17:41:22,750 [INFO]    - media_type_tv_station
+2026-05-20 17:41:22,750 [INFO]    - media_type_website
+2026-05-20 17:41:22,750 [INFO]    - traffic_high_traffic
+2026-05-20 17:41:22,750 [INFO]    - traffic_medium_traffic
+2026-05-20 17:41:22,750 [INFO]    - traffic_minimal_traffic
+2026-05-20 17:41:22,750 [INFO]    - traffic_unknown
+2026-05-20 17:41:22,764 [INFO] 
+============================================================
+2026-05-20 17:41:22,764 [INFO] EXPERIMENT: Ablation_NoMBFC
+2026-05-20 17:41:22,764 [INFO] ============================================================
+2026-05-20 17:41:22,764 [INFO] Samples: 3942, Features: 164
+2026-05-20 17:41:22,792 [INFO] Feature engineering: 164 -> 199 features (+35 derived)
+2026-05-20 17:41:22,798 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-05-20 17:41:22,813 [INFO] Feature selection: 199 -> 119 features
+2026-05-20 17:41:22,814 [INFO] 
+  Tuning RF with Optuna (50 trials)...
+2026-05-20 17:47:16,857 [INFO]   Best RF params: {'n_estimators': 200, 'max_depth': 50, 'min_samples_split': 3, 'min_samples_leaf': 1, 'max_features': 0.7621800802517393} (CV score: 0.4842)
+2026-05-20 17:47:16,857 [INFO]   Tuning XGB with Optuna (50 trials)...
+2026-05-20 17:49:19,333 [INFO]   Best XGB params: {'n_estimators': 700, 'max_depth': 5, 'learning_rate': 0.14402786298691522, 'subsample': 0.8434966496481093, 'colsample_bytree': 0.5774466881073881, 'min_child_weight': 5, 'gamma': 0.059601710173256696, 'reg_alpha': 0.00561642556062631, 'reg_lambda': 1.9356843184875068e-08} (CV score: 0.5359)
+2026-05-20 17:49:19,334 [INFO] 
+  Running: RF_no_balance...
+2026-05-20 17:49:23,584 [INFO]     Macro F1: 0.4883 (+/- 0.0258)
+2026-05-20 17:49:23,584 [INFO]     high F1: 0.9069
+2026-05-20 17:49:23,584 [INFO]     low F1: 0.3163
+2026-05-20 17:49:23,584 [INFO]     medium F1: 0.2457
+2026-05-20 17:49:23,703 [INFO] 
+  Running: XGB_no_balance...
+2026-05-20 17:49:29,218 [INFO]     Macro F1: 0.5516 (+/- 0.0335)
+2026-05-20 17:49:29,218 [INFO]     high F1: 0.9076
+2026-05-20 17:49:29,218 [INFO]     low F1: 0.4048
+2026-05-20 17:49:29,218 [INFO]     medium F1: 0.3486
+2026-05-20 17:49:29,347 [INFO] 
+  Running: RF_SMOTE...
+2026-05-20 17:49:41,666 [INFO]     Macro F1: 0.5430 (+/- 0.0249)
+2026-05-20 17:49:41,666 [INFO]     high F1: 0.8864
+2026-05-20 17:49:41,666 [INFO]     low F1: 0.3492
+2026-05-20 17:49:41,666 [INFO]     medium F1: 0.3922
+2026-05-20 17:49:41,782 [INFO] 
+  Running: XGB_SMOTE...
+2026-05-20 17:49:52,891 [INFO]     Macro F1: 0.5476 (+/- 0.0258)
+2026-05-20 17:49:52,891 [INFO]     high F1: 0.9021
+2026-05-20 17:49:52,891 [INFO]     low F1: 0.3985
+2026-05-20 17:49:52,891 [INFO]     medium F1: 0.3452
+2026-05-20 17:49:53,023 [INFO] 
+  Running: RF_class_weights...
+2026-05-20 17:49:56,139 [INFO]     Macro F1: 0.4664 (+/- 0.0423)
+2026-05-20 17:49:56,139 [INFO]     high F1: 0.9070
+2026-05-20 17:49:56,139 [INFO]     low F1: 0.2857
+2026-05-20 17:49:56,139 [INFO]     medium F1: 0.2113
+2026-05-20 17:49:56,263 [INFO] 
+  Running: XGB_class_weights...
+2026-05-20 17:50:01,809 [INFO]     Macro F1: 0.5753 (+/- 0.0307)
+2026-05-20 17:50:01,809 [INFO]     high F1: 0.9024
+2026-05-20 17:50:01,810 [INFO]     low F1: 0.4236
+2026-05-20 17:50:01,810 [INFO]     medium F1: 0.4028
+2026-05-20 17:50:01,939 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-05-20 17:50:14,327 [INFO]     Macro F1: 0.5432 (+/- 0.0251)
+2026-05-20 17:50:14,327 [INFO]     high F1: 0.8865
+2026-05-20 17:50:14,327 [INFO]     low F1: 0.3492
+2026-05-20 17:50:14,327 [INFO]     medium F1: 0.3925
+2026-05-20 17:50:14,441 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-05-20 17:50:26,323 [INFO]     Macro F1: 0.5656 (+/- 0.0179)
+2026-05-20 17:50:26,324 [INFO]     high F1: 0.8897
+2026-05-20 17:50:26,324 [INFO]     low F1: 0.4188
+2026-05-20 17:50:26,324 [INFO]     medium F1: 0.3911
+2026-05-20 17:50:26,452 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-05-20 17:50:50,830 [INFO]     Macro F1: 0.5500
+2026-05-20 17:50:50,831 [INFO]     high F1: 0.9004
+2026-05-20 17:50:50,831 [INFO]     low F1: 0.4147
+2026-05-20 17:50:50,831 [INFO]     medium F1: 0.3348
+2026-05-20 17:50:50,959 [INFO] 
+================================================================================
+2026-05-20 17:50:50,959 [INFO] TIER: PureStructural
+2026-05-20 17:50:50,960 [INFO] ================================================================================
+2026-05-20 17:50:50,960 [INFO] Kept 82 / 190 features (108 dropped)
+2026-05-20 17:50:50,960 [INFO] Dropped features:
+2026-05-20 17:50:50,960 [INFO]    - ad_density
+2026-05-20 17:50:50,960 [INFO]    - ad_keyword_count
+2026-05-20 17:50:50,960 [INFO]    - avg_sentence_length
+2026-05-20 17:50:50,960 [INFO]    - avg_word_length
+2026-05-20 17:50:50,960 [INFO]    - clickbait_allcaps_headlines
+2026-05-20 17:50:50,960 [INFO]    - clickbait_exclamation_headlines
+2026-05-20 17:50:50,960 [INFO]    - clickbait_question_headlines
+2026-05-20 17:50:50,960 [INFO]    - country_australia
+2026-05-20 17:50:50,960 [INFO]    - country_canada
+2026-05-20 17:50:50,960 [INFO]    - country_france
+2026-05-20 17:50:50,960 [INFO]    - country_germany
+2026-05-20 17:50:50,961 [INFO]    - country_india
+2026-05-20 17:50:50,961 [INFO]    - country_ireland
+2026-05-20 17:50:50,961 [INFO]    - country_israel
+2026-05-20 17:50:50,961 [INFO]    - country_italy
+2026-05-20 17:50:50,961 [INFO]    - country_netherlands
+2026-05-20 17:50:50,961 [INFO]    - country_other
+2026-05-20 17:50:50,961 [INFO]    - country_russia
+2026-05-20 17:50:50,961 [INFO]    - country_turkey
+2026-05-20 17:50:50,961 [INFO]    - country_uk
+2026-05-20 17:50:50,961 [INFO]    - country_usa
+2026-05-20 17:50:50,961 [INFO]    - has_about_page_link
+2026-05-20 17:50:50,961 [INFO]    - has_contact_page_link
+2026-05-20 17:50:50,961 [INFO]    - has_privacy_policy_link
+2026-05-20 17:50:50,961 [INFO]    - has_terms_link
+2026-05-20 17:50:50,961 [INFO]    - media_type_magazine
+2026-05-20 17:50:50,961 [INFO]    - media_type_news_agency
+2026-05-20 17:50:50,961 [INFO]    - media_type_newspaper
+2026-05-20 17:50:50,961 [INFO]    - media_type_organization_foundation
+2026-05-20 17:50:50,962 [INFO]    - media_type_other
+2026-05-20 17:50:50,962 [INFO]    - media_type_radio_station
+2026-05-20 17:50:50,962 [INFO]    - media_type_tv_station
+2026-05-20 17:50:50,962 [INFO]    - media_type_website
+2026-05-20 17:50:50,962 [INFO]    - ngram_.com
+2026-05-20 17:50:50,962 [INFO]    - ngram_.net
+2026-05-20 17:50:50,962 [INFO]    - ngram_.org
+2026-05-20 17:50:50,962 [INFO]    - ngram_ail
+2026-05-20 17:50:50,962 [INFO]    - ngram_an
+2026-05-20 17:50:50,962 [INFO]    - ngram_ati
+2026-05-20 17:50:50,962 [INFO]    - ngram_co
+2026-05-20 17:50:50,962 [INFO]    - ngram_com
+2026-05-20 17:50:50,962 [INFO]    - ngram_dai
+2026-05-20 17:50:50,962 [INFO]    - ngram_daily
+2026-05-20 17:50:50,962 [INFO]    - ngram_dia
+2026-05-20 17:50:50,962 [INFO]    - ngram_ed
+2026-05-20 17:50:50,962 [INFO]    - ngram_edi
+2026-05-20 17:50:50,962 [INFO]    - ngram_en
+2026-05-20 17:50:50,962 [INFO]    - ngram_epo
+2026-05-20 17:50:50,962 [INFO]    - ngram_er
+2026-05-20 17:50:50,962 [INFO]    - ngram_es
+2026-05-20 17:50:50,962 [INFO]    - ngram_et
+2026-05-20 17:50:50,963 [INFO]    - ngram_ew
+2026-05-20 17:50:50,963 [INFO]    - ngram_ews
+2026-05-20 17:50:50,963 [INFO]    - ngram_free
+2026-05-20 17:50:50,963 [INFO]    - ngram_he
+2026-05-20 17:50:50,963 [INFO]    - ngram_ics
+2026-05-20 17:50:50,963 [INFO]    - ngram_ily
+2026-05-20 17:50:50,963 [INFO]    - ngram_ime
+2026-05-20 17:50:50,963 [INFO]    - ngram_in
+2026-05-20 17:50:50,963 [INFO]    - ngram_ion
+2026-05-20 17:50:50,963 [INFO]    - ngram_lit
+2026-05-20 17:50:50,963 [INFO]    - ngram_med
+2026-05-20 17:50:50,963 [INFO]    - ngram_media
+2026-05-20 17:50:50,963 [INFO]    - ngram_mes
+2026-05-20 17:50:50,963 [INFO]    - ngram_nal
+2026-05-20 17:50:50,963 [INFO]    - ngram_nat
+2026-05-20 17:50:50,963 [INFO]    - ngram_ne
+2026-05-20 17:50:50,963 [INFO]    - ngram_net
+2026-05-20 17:50:50,963 [INFO]    - ngram_new
+2026-05-20 17:50:50,963 [INFO]    - ngram_news
+2026-05-20 17:50:50,964 [INFO]    - ngram_oli
+2026-05-20 17:50:50,964 [INFO]    - ngram_om
+2026-05-20 17:50:50,964 [INFO]    - ngram_on
+2026-05-20 17:50:50,964 [INFO]    - ngram_or
+2026-05-20 17:50:50,964 [INFO]    - ngram_org
+2026-05-20 17:50:50,964 [INFO]    - ngram_ort
+2026-05-20 17:50:50,964 [INFO]    - ngram_ost
+2026-05-20 17:50:50,964 [INFO]    - ngram_pol
+2026-05-20 17:50:50,964 [INFO]    - ngram_polit
+2026-05-20 17:50:50,964 [INFO]    - ngram_por
+2026-05-20 17:50:50,964 [INFO]    - ngram_pos
+2026-05-20 17:50:50,964 [INFO]    - ngram_post
+2026-05-20 17:50:50,964 [INFO]    - ngram_press
+2026-05-20 17:50:50,964 [INFO]    - ngram_re
+2026-05-20 17:50:50,964 [INFO]    - ngram_rep
+2026-05-20 17:50:50,964 [INFO]    - ngram_report
+2026-05-20 17:50:50,964 [INFO]    - ngram_rg
+2026-05-20 17:50:50,964 [INFO]    - ngram_th
+2026-05-20 17:50:50,964 [INFO]    - ngram_the
+2026-05-20 17:50:50,964 [INFO]    - ngram_ti
+2026-05-20 17:50:50,964 [INFO]    - ngram_tic
+2026-05-20 17:50:50,964 [INFO]    - ngram_tim
+2026-05-20 17:50:50,965 [INFO]    - ngram_time
+2026-05-20 17:50:50,965 [INFO]    - ngram_tio
+2026-05-20 17:50:50,965 [INFO]    - ngram_trib
+2026-05-20 17:50:50,965 [INFO]    - ngram_wire
+2026-05-20 17:50:50,965 [INFO]    - ngram_ws
+2026-05-20 17:50:50,965 [INFO]    - ngram_ww
+2026-05-20 17:50:50,965 [INFO]    - ngram_www
+2026-05-20 17:50:50,965 [INFO]    - sentence_count
+2026-05-20 17:50:50,965 [INFO]    - social_media_link_count
+2026-05-20 17:50:50,965 [INFO]    - text_length
+2026-05-20 17:50:50,965 [INFO]    - text_to_html_ratio
+2026-05-20 17:50:50,965 [INFO]    - traffic_high_traffic
+2026-05-20 17:50:50,965 [INFO]    - traffic_medium_traffic
+2026-05-20 17:50:50,965 [INFO]    - traffic_minimal_traffic
+2026-05-20 17:50:50,965 [INFO]    - traffic_unknown
+2026-05-20 17:50:50,965 [INFO]    - word_count
+2026-05-20 17:50:50,971 [INFO] 
+============================================================
+2026-05-20 17:50:50,972 [INFO] EXPERIMENT: Ablation_PureStructural
+2026-05-20 17:50:50,972 [INFO] ============================================================
+2026-05-20 17:50:50,972 [INFO] Samples: 3942, Features: 82
+2026-05-20 17:50:50,982 [INFO] Feature engineering: 82 -> 105 features (+23 derived)
+2026-05-20 17:50:50,984 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-05-20 17:50:50,989 [INFO] Feature selection: 105 -> 80 features
+2026-05-20 17:50:50,989 [INFO] 
+  Tuning RF with Optuna (50 trials)...
+2026-05-20 17:55:57,606 [INFO]   Best RF params: {'n_estimators': 200, 'max_depth': 41, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 0.570482748552892} (CV score: 0.5082)
+2026-05-20 17:55:57,606 [INFO]   Tuning XGB with Optuna (50 trials)...
+2026-05-20 17:57:22,179 [INFO]   Best XGB params: {'n_estimators': 500, 'max_depth': 3, 'learning_rate': 0.21377109405628106, 'subsample': 0.9547068785843865, 'colsample_bytree': 0.7350085778651486, 'min_child_weight': 1, 'gamma': 0.11169698576374704, 'reg_alpha': 0.0006214279945959046, 'reg_lambda': 5.181584181214621e-06} (CV score: 0.5502)
+2026-05-20 17:57:22,180 [INFO] 
+  Running: RF_no_balance...
+2026-05-20 17:57:24,586 [INFO]     Macro F1: 0.5084 (+/- 0.0235)
+2026-05-20 17:57:24,587 [INFO]     high F1: 0.9082
+2026-05-20 17:57:24,587 [INFO]     low F1: 0.3524
+2026-05-20 17:57:24,587 [INFO]     medium F1: 0.2667
+2026-05-20 17:57:24,706 [INFO] 
+  Running: XGB_no_balance...
+2026-05-20 17:57:27,125 [INFO]     Macro F1: 0.5489 (+/- 0.0352)
+2026-05-20 17:57:27,125 [INFO]     high F1: 0.9067
+2026-05-20 17:57:27,125 [INFO]     low F1: 0.3810
+2026-05-20 17:57:27,125 [INFO]     medium F1: 0.3613
+2026-05-20 17:57:27,265 [INFO] 
+  Running: RF_SMOTE...
+2026-05-20 17:57:34,099 [INFO]     Macro F1: 0.5584 (+/- 0.0307)
+2026-05-20 17:57:34,099 [INFO]     high F1: 0.8867
+2026-05-20 17:57:34,099 [INFO]     low F1: 0.3892
+2026-05-20 17:57:34,099 [INFO]     medium F1: 0.4000
+2026-05-20 17:57:34,216 [INFO] 
+  Running: XGB_SMOTE...
+2026-05-20 17:57:38,798 [INFO]     Macro F1: 0.5508 (+/- 0.0339)
+2026-05-20 17:57:38,798 [INFO]     high F1: 0.8968
+2026-05-20 17:57:38,798 [INFO]     low F1: 0.3885
+2026-05-20 17:57:38,798 [INFO]     medium F1: 0.3695
+2026-05-20 17:57:38,933 [INFO] 
+  Running: RF_class_weights...
+2026-05-20 17:57:41,171 [INFO]     Macro F1: 0.4652 (+/- 0.0402)
+2026-05-20 17:57:41,172 [INFO]     high F1: 0.9050
+2026-05-20 17:57:41,172 [INFO]     low F1: 0.2936
+2026-05-20 17:57:41,172 [INFO]     medium F1: 0.2009
+2026-05-20 17:57:41,307 [INFO] 
+  Running: XGB_class_weights...
+2026-05-20 17:57:43,693 [INFO]     Macro F1: 0.5536 (+/- 0.0246)
+2026-05-20 17:57:43,693 [INFO]     high F1: 0.8829
+2026-05-20 17:57:43,693 [INFO]     low F1: 0.3906
+2026-05-20 17:57:43,694 [INFO]     medium F1: 0.3906
+2026-05-20 17:57:43,847 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-05-20 17:57:50,657 [INFO]     Macro F1: 0.5584 (+/- 0.0307)
+2026-05-20 17:57:50,657 [INFO]     high F1: 0.8867
+2026-05-20 17:57:50,657 [INFO]     low F1: 0.3892
+2026-05-20 17:57:50,657 [INFO]     medium F1: 0.4000
+2026-05-20 17:57:50,775 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-05-20 17:57:55,704 [INFO]     Macro F1: 0.5608 (+/- 0.0210)
+2026-05-20 17:57:55,704 [INFO]     high F1: 0.8775
+2026-05-20 17:57:55,704 [INFO]     low F1: 0.3821
+2026-05-20 17:57:55,704 [INFO]     medium F1: 0.4238
+2026-05-20 17:57:55,841 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-05-20 17:58:07,778 [INFO]     Macro F1: 0.5619
+2026-05-20 17:58:07,778 [INFO]     high F1: 0.8957
+2026-05-20 17:58:07,778 [INFO]     low F1: 0.4037
+2026-05-20 17:58:07,778 [INFO]     medium F1: 0.3861
+2026-05-20 17:58:08,044 [INFO] Saved tier-comparison figure -> C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v4_ablation\ablation_tier_comparison.png
+2026-05-20 17:58:08,044 [INFO] 
+================================================================================
+2026-05-20 17:58:08,044 [INFO] ABLATION SUMMARY (XGB SMOTE + class weights, enriched dataset)
+2026-05-20 17:58:08,044 [INFO] ================================================================================
+2026-05-20 17:58:08,047 [INFO] 
+          tier  n_features_input  macro_f1  macro_f1_std  f1_high  f1_medium  f1_low  accuracy
+          Full               190    0.5940        0.0202   0.8974     0.4265  0.4583    0.8120
+        NoMBFC               164    0.5656        0.0179   0.8897     0.3911  0.4188    0.8026
+PureStructural                82    0.5608        0.0210   0.8775     0.4238  0.3821    0.7869
+
+2026-05-20 17:58:08,047 [INFO] Reproducibility check: the 'Full' tier replays the enriched XGB_SMOTE_weights configuration from model_comparison_v4.py and should match its reported macro F1 (around 0.594) within rounding. If it doesn't, something in the pipeline has drifted.
+2026-05-20 17:58:08,047 [INFO] 
+All results saved to: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v4_ablation
+
