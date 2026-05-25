@@ -1,0 +1,9 @@
+group,n,n_high,n_low,n_med,macro_f1,f1_high,f1_low,f1_med,n_low_reliable
+newspaper,1339,1288,3,48,0.568,0.98,0.286,0.439,False
+website,929,554,132,243,0.524,0.698,0.461,0.413,True
+organization_foundation,671,509,15,147,0.406,0.787,0.08,0.351,True
+tv_station,584,562,7,15,0.561,0.982,0.5,0.2,True
+radio_station,187,137,0,50,0.617,0.955,0.0,0.897,False
+magazine,142,110,8,24,0.556,0.843,0.545,0.279,True
+other,67,55,3,9,0.624,0.903,0.5,0.471,False
+news_agency,23,17,2,4,0.525,0.774,0.4,0.4,False

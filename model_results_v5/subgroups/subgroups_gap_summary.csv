@@ -1,0 +1,4 @@
+bucket,n,n_low,macro_f1,f1_high,f1_low
+Anglo (USA/UK/Canada),3515,126,0.603,0.913,0.447
+Other (country_other bucket),243,29,0.559,0.689,0.519
+Other (named non-Anglo),184,15,0.348,0.717,0.08

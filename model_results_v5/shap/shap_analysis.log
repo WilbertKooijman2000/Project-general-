@@ -1,0 +1,125 @@
+2026-05-22 07:19:03,759 [INFO] ======================================================================
+2026-05-22 07:19:03,759 [INFO] SHAP ANALYSIS - Enriched XGBoost (SMOTE + class weights)
+2026-05-22 07:19:03,759 [INFO] ======================================================================
+2026-05-22 07:19:03,760 [INFO] Loading saved model bundle...
+2026-05-22 07:19:03,808 [INFO]   Model classes: ['high credibility', 'low credibility', 'medium credibility']
+2026-05-22 07:19:03,808 [INFO]   Engineered features: 225
+2026-05-22 07:19:03,808 [INFO]   Selected features: 135
+2026-05-22 07:19:03,808 [INFO] Rebuilding enriched dataset (this re-extracts HTML features; ~75 min)...
+2026-05-22 07:19:03,999 [INFO] Loading MBFC metadata from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\results_expanded.json
+2026-05-22 07:19:04,065 [INFO] Built metadata lookup for 11648 domains
+2026-05-22 07:19:04,146 [INFO] Scanning 2937 CSS files...
+2026-05-22 07:28:29,458 [INFO] Real CSS files: 2377, HTML error pages skipped: 560
+2026-05-22 07:28:29,459 [INFO] 
+Building baseline dataset from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\html_front
+2026-05-22 07:28:29,542 [INFO] Found 4189 HTML files
+2026-05-22 08:38:46,679 [INFO] Baseline: extracted features from 3779 sources (410 skipped)
+2026-05-22 08:38:46,681 [INFO]   high credibility: 3232
+2026-05-22 08:38:46,682 [INFO]   medium credibility: 540
+2026-05-22 08:38:46,682 [INFO]   low credibility: 7
+2026-05-22 08:38:46,885 [INFO] 
+Loading enriched low-cred data from: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\low_cred_features_latest.csv
+2026-05-22 08:38:46,914 [INFO] Loaded 163 enriched low-credibility sources
+2026-05-22 08:38:46,918 [INFO] Found 160 saved HTML files for CSS re-extraction
+2026-05-22 08:55:28,269 [INFO] Re-extracted CSS features from 160/163 saved HTML files
+2026-05-22 08:55:28,274 [INFO] Added MBFC metadata + n-gram + CSS features to enriched data (117 new columns)
+2026-05-22 08:55:28,274 [INFO] Common features: 192
+2026-05-22 08:55:28,275 [INFO] Shared numeric features for modelling: 190
+2026-05-22 08:55:28,292 [INFO] 
+Enriched dataset total: 3942
+2026-05-22 08:55:28,293 [INFO]   high credibility: 3232
+2026-05-22 08:55:28,293 [INFO]   medium credibility: 540
+2026-05-22 08:55:28,294 [INFO]   low credibility: 170
+2026-05-22 08:55:28,295 [INFO] Caching enriched dataset to: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\enriched_df_cache.pkl
+2026-05-22 08:55:28,325 [INFO] Feature engineering: 190 -> 225 features (+35 derived)
+2026-05-22 08:55:28,329 [INFO]   X_full shape (after engineering): (3942, 225)
+2026-05-22 08:55:28,333 [INFO]   X_selected shape (after selector+scaler): (3942, 135)
+2026-05-22 08:55:28,334 [INFO]   Class distribution: {np.int64(0): 3232, np.int64(2): 540, np.int64(1): 170}
+2026-05-22 08:55:28,334 [INFO] 
+Computing SHAP values on up to 1000 samples...
+2026-05-22 08:55:28,661 [INFO]   Computed SHAP for 1000 samples, 3 class(es)
+2026-05-22 08:55:29,484 [INFO]   Saved overall plot: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_global_importance_overall.pdf
+2026-05-22 08:55:29,852 [INFO]   Saved high credibility plot: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_global_importance_high_credibility.pdf
+2026-05-22 08:55:30,212 [INFO]   Saved low credibility plot: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_global_importance_low_credibility.pdf
+2026-05-22 08:55:30,583 [INFO]   Saved medium credibility plot: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_global_importance_medium_credibility.pdf
+2026-05-22 08:55:31,436 [INFO]   Saved low-cred beeswarm: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_beeswarm_low_credibility.pdf
+2026-05-22 08:55:31,440 [INFO]   Saved top features CSV: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap\shap_top_features.csv
+2026-05-22 08:55:31,441 [INFO] 
+======================================================================
+2026-05-22 08:55:31,441 [INFO] TOP 15 FEATURES OVERALL:
+2026-05-22 08:55:31,441 [INFO] ======================================================================
+2026-05-22 08:55:31,442 [INFO]    1. media_type_website                       |SHAP| = 0.6308
+2026-05-22 08:55:31,442 [INFO]    2. media_type_newspaper                     |SHAP| = 0.4994
+2026-05-22 08:55:31,442 [INFO]    3. ad_iframe_count                          |SHAP| = 0.3637
+2026-05-22 08:55:31,442 [INFO]    4. meta_tag_count                           |SHAP| = 0.2993
+2026-05-22 08:55:31,443 [INFO]    5. country_usa                              |SHAP| = 0.2920
+2026-05-22 08:55:31,443 [INFO]    6. css_num_colors                           |SHAP| = 0.2758
+2026-05-22 08:55:31,443 [INFO]    7. num_links_nofollow                       |SHAP| = 0.2611
+2026-05-22 08:55:31,443 [INFO]    8. complexity_score                         |SHAP| = 0.2453
+2026-05-22 08:55:31,443 [INFO]    9. ext_css_num_font_weight_bold             |SHAP| = 0.2329
+2026-05-22 08:55:31,444 [INFO]   10. num_lists                                |SHAP| = 0.2312
+2026-05-22 08:55:31,444 [INFO]   11. log_num_divs                             |SHAP| = 0.2310
+2026-05-22 08:55:31,444 [INFO]   12. log_num_spans                            |SHAP| = 0.2285
+2026-05-22 08:55:31,444 [INFO]   13. social_media_link_count                  |SHAP| = 0.2155
+2026-05-22 08:55:31,444 [INFO]   14. ext_css_num_colors                       |SHAP| = 0.2046
+2026-05-22 08:55:31,444 [INFO]   15. inline_script_count                      |SHAP| = 0.1966
+2026-05-22 08:55:31,444 [INFO] 
+======================================================================
+2026-05-22 08:55:31,444 [INFO] TOP 15 FEATURES FOR LOW-CREDIBILITY CLASS:
+2026-05-22 08:55:31,444 [INFO] ======================================================================
+2026-05-22 08:55:31,445 [INFO]    1. media_type_website                       |SHAP| = 0.7721
+2026-05-22 08:55:31,445 [INFO]    2. media_type_newspaper                     |SHAP| = 0.6064
+2026-05-22 08:55:31,445 [INFO]    3. meta_tag_count                           |SHAP| = 0.4934
+2026-05-22 08:55:31,445 [INFO]    4. css_num_colors                           |SHAP| = 0.4893
+2026-05-22 08:55:31,445 [INFO]    5. num_links_nofollow                       |SHAP| = 0.4889
+2026-05-22 08:55:31,446 [INFO]    6. log_num_divs                             |SHAP| = 0.4479
+2026-05-22 08:55:31,446 [INFO]    7. country_usa                              |SHAP| = 0.4304
+2026-05-22 08:55:31,446 [INFO]    8. complexity_score                         |SHAP| = 0.4211
+2026-05-22 08:55:31,446 [INFO]    9. ext_css_num_font_weight_bold             |SHAP| = 0.4102
+2026-05-22 08:55:31,446 [INFO]   10. ext_css_has_reset                        |SHAP| = 0.4026
+2026-05-22 08:55:31,446 [INFO]   11. ext_css_num_colors                       |SHAP| = 0.3621
+2026-05-22 08:55:31,446 [INFO]   12. ad_iframe_count                          |SHAP| = 0.3522
+2026-05-22 08:55:31,447 [INFO]   13. num_paragraphs                           |SHAP| = 0.2965
+2026-05-22 08:55:31,447 [INFO]   14. inline_script_count                      |SHAP| = 0.2947
+2026-05-22 08:55:31,447 [INFO]   15. ratio_iframes_per_tag                    |SHAP| = 0.2848
+2026-05-22 08:55:31,447 [INFO] 
+======================================================================
+2026-05-22 08:55:31,447 [INFO] TOP 15 FEATURES FOR HIGH-CREDIBILITY CLASS:
+2026-05-22 08:55:31,447 [INFO] ======================================================================
+2026-05-22 08:55:31,447 [INFO]    1. media_type_website                       |SHAP| = 0.7625
+2026-05-22 08:55:31,448 [INFO]    2. media_type_newspaper                     |SHAP| = 0.7303
+2026-05-22 08:55:31,448 [INFO]    3. ad_iframe_count                          |SHAP| = 0.5665
+2026-05-22 08:55:31,448 [INFO]    4. num_lists                                |SHAP| = 0.4513
+2026-05-22 08:55:31,448 [INFO]    5. country_usa                              |SHAP| = 0.3697
+2026-05-22 08:55:31,449 [INFO]    6. css_max_selector_length                  |SHAP| = 0.2966
+2026-05-22 08:55:31,449 [INFO]    7. traffic_minimal_traffic                  |SHAP| = 0.2606
+2026-05-22 08:55:31,449 [INFO]    8. log_num_spans                            |SHAP| = 0.2211
+2026-05-22 08:55:31,449 [INFO]    9. has_privacy_policy_link                  |SHAP| = 0.2147
+2026-05-22 08:55:31,450 [INFO]   10. ratio_images_per_1k_words                |SHAP| = 0.2096
+2026-05-22 08:55:31,450 [INFO]   11. num_links_external                       |SHAP| = 0.1946
+2026-05-22 08:55:31,450 [INFO]   12. media_type_tv_station                    |SHAP| = 0.1774
+2026-05-22 08:55:31,450 [INFO]   13. complexity_score                         |SHAP| = 0.1708
+2026-05-22 08:55:31,450 [INFO]   14. third_party_script_domains               |SHAP| = 0.1675
+2026-05-22 08:55:31,450 [INFO]   15. log_ext_css_num_selectors                |SHAP| = 0.1675
+2026-05-22 08:55:31,451 [INFO] 
+======================================================================
+2026-05-22 08:55:31,451 [INFO] TOP 15 FEATURES FOR MEDIUM-CREDIBILITY CLASS:
+2026-05-22 08:55:31,451 [INFO] ======================================================================
+2026-05-22 08:55:31,452 [INFO]    1. media_type_website                       |SHAP| = 0.3578
+2026-05-22 08:55:31,452 [INFO]    2. css_num_colors                           |SHAP| = 0.2971
+2026-05-22 08:55:31,452 [INFO]    3. social_media_link_count                  |SHAP| = 0.2750
+2026-05-22 08:55:31,452 [INFO]    4. inline_script_count                      |SHAP| = 0.2610
+2026-05-22 08:55:31,452 [INFO]    5. log_num_spans                            |SHAP| = 0.2409
+2026-05-22 08:55:31,452 [INFO]    6. ext_css_num_colors                       |SHAP| = 0.2408
+2026-05-22 08:55:31,452 [INFO]    7. meta_tag_count                           |SHAP| = 0.2408
+2026-05-22 08:55:31,452 [INFO]    8. ext_css_num_font_weight_bold             |SHAP| = 0.2143
+2026-05-22 08:55:31,453 [INFO]    9. trust_score                              |SHAP| = 0.2113
+2026-05-22 08:55:31,453 [INFO]   10. avg_word_length                          |SHAP| = 0.2097
+2026-05-22 08:55:31,453 [INFO]   11. ext_css_uses_web_fonts                   |SHAP| = 0.2030
+2026-05-22 08:55:31,453 [INFO]   12. log_num_divs                             |SHAP| = 0.1968
+2026-05-22 08:55:31,453 [INFO]   13. num_divs                                 |SHAP| = 0.1859
+2026-05-22 08:55:31,453 [INFO]   14. css_num_css_variables                    |SHAP| = 0.1820
+2026-05-22 08:55:31,453 [INFO]   15. max_dom_depth                            |SHAP| = 0.1814
+2026-05-22 08:55:31,453 [INFO] 
+All SHAP outputs saved to: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5\shap
+2026-05-22 08:55:31,453 [INFO] Done.

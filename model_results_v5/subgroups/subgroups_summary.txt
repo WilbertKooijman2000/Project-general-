@@ -1,0 +1,43 @@
+==============================================================================
+V5 SUBGROUP ANALYSIS — Enriched XGB_SMOTE_weights (headline config)
+==============================================================================
+
+Per-country breakdown (sorted by n):
+------------------------------------------------------------------------------
+      group    n  n_high  n_low  n_med  macro_f1  f1_high  f1_low  f1_med  n_low_reliable
+        usa 2924    2431    109    384     0.605    0.907   0.446   0.461            True
+         uk  303     269      7     27     0.636    0.929   0.615   0.364            True
+     canada  288     267     10     11     0.490    0.955   0.333   0.182            True
+      other  243     140     29     74     0.559    0.689   0.519   0.469            True
+  australia   40      31      4      5     0.475    0.786   0.286   0.353           False
+      india   37      19      1     17     0.211    0.419   0.000   0.214           False
+     france   28      25      1      2     0.306    0.917   0.000   0.000           False
+    germany   24      19      2      3     0.281    0.842   0.000   0.000           False
+netherlands   14      12      2      0     0.278    0.833   0.000   0.000           False
+     israel   12       5      1      6     0.103    0.308   0.000   0.000           False
+    ireland    9       8      1      0     0.238    0.714   0.000   0.000           False
+      italy    8       6      0      2     0.256    0.769   0.000   0.000           False
+     russia    7       0      3      4     0.095    0.000   0.000   0.286           False
+     turkey    5       0      0      5     0.296    0.000   0.000   0.889           False
+
+Per-media-type breakdown (sorted by n):
+------------------------------------------------------------------------------
+                  group    n  n_high  n_low  n_med  macro_f1  f1_high  f1_low  f1_med  n_low_reliable
+              newspaper 1339    1288      3     48     0.568    0.980   0.286   0.439           False
+                website  929     554    132    243     0.524    0.698   0.461   0.413            True
+organization_foundation  671     509     15    147     0.406    0.787   0.080   0.351            True
+             tv_station  584     562      7     15     0.561    0.982   0.500   0.200            True
+          radio_station  187     137      0     50     0.617    0.955   0.000   0.897           False
+               magazine  142     110      8     24     0.556    0.843   0.545   0.279            True
+                  other   67      55      3      9     0.624    0.903   0.500   0.471           False
+            news_agency   23      17      2      4     0.525    0.774   0.400   0.400           False
+
+Anglo vs Other gap analysis:
+------------------------------------------------------------------------------
+                      bucket    n  n_low  macro_f1  f1_high  f1_low
+       Anglo (USA/UK/Canada) 3515    126     0.603    0.913   0.447
+Other (country_other bucket)  243     29     0.559    0.689   0.519
+     Other (named non-Anglo)  184     15     0.348    0.717   0.080
+
+Note: subgroups with n_low < 5 are flagged as statistically
+unreliable for per-class F1 (n_low_reliable = False).
