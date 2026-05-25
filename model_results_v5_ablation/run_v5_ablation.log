@@ -1,0 +1,306 @@
+2026-05-22 06:25:55,806 [INFO] 
+Ablation pipeline started at 20260522_062555
+2026-05-22 06:25:55,806 [INFO] Output directory: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5_ablation
+
+2026-05-22 06:25:55,807 [INFO] Loading cached data from C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5_ablation\data_cache.pkl
+2026-05-22 06:25:55,830 [INFO] Full shared feature pool: 190 features
+2026-05-22 06:25:55,831 [INFO] 
+================================================================================
+2026-05-22 06:25:55,831 [INFO] TIER: NoMBFC
+2026-05-22 06:25:55,831 [INFO] ================================================================================
+2026-05-22 06:25:55,831 [INFO] Kept 164 / 190 features (26 dropped)
+2026-05-22 06:25:55,832 [INFO] Dropped features:
+2026-05-22 06:25:55,832 [INFO]    - country_australia
+2026-05-22 06:25:55,832 [INFO]    - country_canada
+2026-05-22 06:25:55,832 [INFO]    - country_france
+2026-05-22 06:25:55,832 [INFO]    - country_germany
+2026-05-22 06:25:55,832 [INFO]    - country_india
+2026-05-22 06:25:55,832 [INFO]    - country_ireland
+2026-05-22 06:25:55,832 [INFO]    - country_israel
+2026-05-22 06:25:55,832 [INFO]    - country_italy
+2026-05-22 06:25:55,832 [INFO]    - country_netherlands
+2026-05-22 06:25:55,832 [INFO]    - country_other
+2026-05-22 06:25:55,832 [INFO]    - country_russia
+2026-05-22 06:25:55,833 [INFO]    - country_turkey
+2026-05-22 06:25:55,833 [INFO]    - country_uk
+2026-05-22 06:25:55,833 [INFO]    - country_usa
+2026-05-22 06:25:55,833 [INFO]    - media_type_magazine
+2026-05-22 06:25:55,833 [INFO]    - media_type_news_agency
+2026-05-22 06:25:55,833 [INFO]    - media_type_newspaper
+2026-05-22 06:25:55,833 [INFO]    - media_type_organization_foundation
+2026-05-22 06:25:55,833 [INFO]    - media_type_other
+2026-05-22 06:25:55,833 [INFO]    - media_type_radio_station
+2026-05-22 06:25:55,833 [INFO]    - media_type_tv_station
+2026-05-22 06:25:55,833 [INFO]    - media_type_website
+2026-05-22 06:25:55,833 [INFO]    - traffic_high_traffic
+2026-05-22 06:25:55,833 [INFO]    - traffic_medium_traffic
+2026-05-22 06:25:55,834 [INFO]    - traffic_minimal_traffic
+2026-05-22 06:25:55,834 [INFO]    - traffic_unknown
+2026-05-22 06:25:55,852 [INFO] 
+============================================================
+2026-05-22 06:25:55,853 [INFO] EXPERIMENT (per-fold SelectKBest): Ablation_NoMBFC
+2026-05-22 06:25:55,853 [INFO] ============================================================
+2026-05-22 06:25:55,853 [INFO] Samples: 3942, Candidate features: 164
+2026-05-22 06:25:55,878 [INFO] Feature engineering: 164 -> 199 features (+35 derived)
+2026-05-22 06:25:55,882 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-05-22 06:25:55,882 [INFO] After feature engineering: 199 candidate features
+2026-05-22 06:25:55,882 [INFO] Per-fold SelectKBest target: k = 119
+2026-05-22 06:25:55,882 [INFO] 
+  Tuning RF with Optuna (50 trials, per-fold SelectKBest inside each trial)...
+2026-05-22 06:28:24,546 [INFO]   Best RF params: {'n_estimators': 300, 'max_depth': 31, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 0.7787234046775773} (CV score: 0.4823)
+2026-05-22 06:28:24,546 [INFO]   Tuning XGB with Optuna (50 trials, per-fold SelectKBest inside each trial)...
+2026-05-22 06:31:01,086 [INFO]   Best XGB params: {'n_estimators': 550, 'max_depth': 3, 'learning_rate': 0.2965001704633937, 'subsample': 0.8104454746612925, 'colsample_bytree': 0.8835668557336535, 'min_child_weight': 3, 'gamma': 0.05554506082689942, 'reg_alpha': 1.6391342768915171e-06, 'reg_lambda': 2.2362543445723204e-07} (CV score: 0.5453)
+2026-05-22 06:31:01,087 [INFO] 
+  Running: RF_no_balance...
+2026-05-22 06:31:08,112 [INFO]     Macro F1: 0.4796 (+/- 0.0396)
+2026-05-22 06:31:08,112 [INFO]     high F1: 0.9072
+2026-05-22 06:31:08,112 [INFO]     low F1: 0.3041
+2026-05-22 06:31:08,113 [INFO]     medium F1: 0.2307
+2026-05-22 06:31:08,781 [INFO] 
+  Running: XGB_no_balance...
+2026-05-22 06:31:13,155 [INFO]     Macro F1: 0.5384 (+/- 0.0254)
+2026-05-22 06:31:13,155 [INFO]     high F1: 0.9054
+2026-05-22 06:31:13,155 [INFO]     low F1: 0.3730
+2026-05-22 06:31:13,155 [INFO]     medium F1: 0.3418
+2026-05-22 06:31:13,311 [INFO] 
+  Running: RF_SMOTE...
+2026-05-22 06:31:34,798 [INFO]     Macro F1: 0.5438 (+/- 0.0391)
+2026-05-22 06:31:34,798 [INFO]     high F1: 0.8906
+2026-05-22 06:31:34,798 [INFO]     low F1: 0.3292
+2026-05-22 06:31:34,798 [INFO]     medium F1: 0.4087
+2026-05-22 06:31:34,928 [INFO] 
+  Running: XGB_SMOTE...
+2026-05-22 06:31:43,262 [INFO]     Macro F1: 0.5579 (+/- 0.0337)
+2026-05-22 06:31:43,262 [INFO]     high F1: 0.9037
+2026-05-22 06:31:43,262 [INFO]     low F1: 0.4000
+2026-05-22 06:31:43,262 [INFO]     medium F1: 0.3745
+2026-05-22 06:31:43,423 [INFO] 
+  Running: RF_class_weights...
+2026-05-22 06:31:48,507 [INFO]     Macro F1: 0.4606 (+/- 0.0287)
+2026-05-22 06:31:48,508 [INFO]     high F1: 0.9075
+2026-05-22 06:31:48,508 [INFO]     low F1: 0.2642
+2026-05-22 06:31:48,508 [INFO]     medium F1: 0.2136
+2026-05-22 06:31:48,648 [INFO] 
+  Running: XGB_class_weights...
+2026-05-22 06:31:52,479 [INFO]     Macro F1: 0.5698 (+/- 0.0247)
+2026-05-22 06:31:52,479 [INFO]     high F1: 0.8977
+2026-05-22 06:31:52,479 [INFO]     low F1: 0.4111
+2026-05-22 06:31:52,480 [INFO]     medium F1: 0.4031
+2026-05-22 06:31:52,682 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-05-22 06:32:13,137 [INFO]     Macro F1: 0.5438 (+/- 0.0391)
+2026-05-22 06:32:13,138 [INFO]     high F1: 0.8906
+2026-05-22 06:32:13,138 [INFO]     low F1: 0.3292
+2026-05-22 06:32:13,138 [INFO]     medium F1: 0.4087
+2026-05-22 06:32:13,278 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-05-22 06:32:21,446 [INFO]     Macro F1: 0.5507 (+/- 0.0210)
+2026-05-22 06:32:21,446 [INFO]     high F1: 0.8870
+2026-05-22 06:32:21,446 [INFO]     low F1: 0.3683
+2026-05-22 06:32:21,446 [INFO]     medium F1: 0.3996
+2026-05-22 06:32:21,612 [INFO] 
+  Feature-selection stability (Ablation_NoMBFC): 91 always, 52 sometimes, 56 never selected
+2026-05-22 06:32:21,615 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-05-22 06:32:50,502 [INFO]     Macro F1: 0.5450
+2026-05-22 06:32:50,502 [INFO]     high F1: 0.9016
+2026-05-22 06:32:50,502 [INFO]     low F1: 0.3677
+2026-05-22 06:32:50,502 [INFO]     medium F1: 0.3656
+2026-05-22 06:32:50,709 [INFO] 
+================================================================================
+2026-05-22 06:32:50,709 [INFO] TIER: PureStructural
+2026-05-22 06:32:50,709 [INFO] ================================================================================
+2026-05-22 06:32:50,709 [INFO] Kept 82 / 190 features (108 dropped)
+2026-05-22 06:32:50,709 [INFO] Dropped features:
+2026-05-22 06:32:50,709 [INFO]    - ad_density
+2026-05-22 06:32:50,709 [INFO]    - ad_keyword_count
+2026-05-22 06:32:50,709 [INFO]    - avg_sentence_length
+2026-05-22 06:32:50,710 [INFO]    - avg_word_length
+2026-05-22 06:32:50,710 [INFO]    - clickbait_allcaps_headlines
+2026-05-22 06:32:50,710 [INFO]    - clickbait_exclamation_headlines
+2026-05-22 06:32:50,710 [INFO]    - clickbait_question_headlines
+2026-05-22 06:32:50,710 [INFO]    - country_australia
+2026-05-22 06:32:50,710 [INFO]    - country_canada
+2026-05-22 06:32:50,710 [INFO]    - country_france
+2026-05-22 06:32:50,710 [INFO]    - country_germany
+2026-05-22 06:32:50,710 [INFO]    - country_india
+2026-05-22 06:32:50,710 [INFO]    - country_ireland
+2026-05-22 06:32:50,711 [INFO]    - country_israel
+2026-05-22 06:32:50,711 [INFO]    - country_italy
+2026-05-22 06:32:50,711 [INFO]    - country_netherlands
+2026-05-22 06:32:50,711 [INFO]    - country_other
+2026-05-22 06:32:50,711 [INFO]    - country_russia
+2026-05-22 06:32:50,711 [INFO]    - country_turkey
+2026-05-22 06:32:50,711 [INFO]    - country_uk
+2026-05-22 06:32:50,711 [INFO]    - country_usa
+2026-05-22 06:32:50,711 [INFO]    - has_about_page_link
+2026-05-22 06:32:50,711 [INFO]    - has_contact_page_link
+2026-05-22 06:32:50,712 [INFO]    - has_privacy_policy_link
+2026-05-22 06:32:50,712 [INFO]    - has_terms_link
+2026-05-22 06:32:50,712 [INFO]    - media_type_magazine
+2026-05-22 06:32:50,712 [INFO]    - media_type_news_agency
+2026-05-22 06:32:50,712 [INFO]    - media_type_newspaper
+2026-05-22 06:32:50,712 [INFO]    - media_type_organization_foundation
+2026-05-22 06:32:50,712 [INFO]    - media_type_other
+2026-05-22 06:32:50,712 [INFO]    - media_type_radio_station
+2026-05-22 06:32:50,712 [INFO]    - media_type_tv_station
+2026-05-22 06:32:50,712 [INFO]    - media_type_website
+2026-05-22 06:32:50,713 [INFO]    - ngram_.com
+2026-05-22 06:32:50,713 [INFO]    - ngram_.net
+2026-05-22 06:32:50,713 [INFO]    - ngram_.org
+2026-05-22 06:32:50,713 [INFO]    - ngram_ail
+2026-05-22 06:32:50,713 [INFO]    - ngram_an
+2026-05-22 06:32:50,713 [INFO]    - ngram_ati
+2026-05-22 06:32:50,713 [INFO]    - ngram_co
+2026-05-22 06:32:50,713 [INFO]    - ngram_com
+2026-05-22 06:32:50,713 [INFO]    - ngram_dai
+2026-05-22 06:32:50,714 [INFO]    - ngram_daily
+2026-05-22 06:32:50,714 [INFO]    - ngram_dia
+2026-05-22 06:32:50,714 [INFO]    - ngram_ed
+2026-05-22 06:32:50,714 [INFO]    - ngram_edi
+2026-05-22 06:32:50,714 [INFO]    - ngram_en
+2026-05-22 06:32:50,714 [INFO]    - ngram_epo
+2026-05-22 06:32:50,714 [INFO]    - ngram_er
+2026-05-22 06:32:50,714 [INFO]    - ngram_es
+2026-05-22 06:32:50,714 [INFO]    - ngram_et
+2026-05-22 06:32:50,714 [INFO]    - ngram_ew
+2026-05-22 06:32:50,715 [INFO]    - ngram_ews
+2026-05-22 06:32:50,715 [INFO]    - ngram_free
+2026-05-22 06:32:50,715 [INFO]    - ngram_he
+2026-05-22 06:32:50,715 [INFO]    - ngram_ics
+2026-05-22 06:32:50,715 [INFO]    - ngram_ily
+2026-05-22 06:32:50,715 [INFO]    - ngram_ime
+2026-05-22 06:32:50,715 [INFO]    - ngram_in
+2026-05-22 06:32:50,715 [INFO]    - ngram_ion
+2026-05-22 06:32:50,715 [INFO]    - ngram_lit
+2026-05-22 06:32:50,716 [INFO]    - ngram_med
+2026-05-22 06:32:50,716 [INFO]    - ngram_media
+2026-05-22 06:32:50,716 [INFO]    - ngram_mes
+2026-05-22 06:32:50,716 [INFO]    - ngram_nal
+2026-05-22 06:32:50,716 [INFO]    - ngram_nat
+2026-05-22 06:32:50,716 [INFO]    - ngram_ne
+2026-05-22 06:32:50,716 [INFO]    - ngram_net
+2026-05-22 06:32:50,716 [INFO]    - ngram_new
+2026-05-22 06:32:50,716 [INFO]    - ngram_news
+2026-05-22 06:32:50,717 [INFO]    - ngram_oli
+2026-05-22 06:32:50,717 [INFO]    - ngram_om
+2026-05-22 06:32:50,717 [INFO]    - ngram_on
+2026-05-22 06:32:50,717 [INFO]    - ngram_or
+2026-05-22 06:32:50,717 [INFO]    - ngram_org
+2026-05-22 06:32:50,717 [INFO]    - ngram_ort
+2026-05-22 06:32:50,717 [INFO]    - ngram_ost
+2026-05-22 06:32:50,717 [INFO]    - ngram_pol
+2026-05-22 06:32:50,717 [INFO]    - ngram_polit
+2026-05-22 06:32:50,717 [INFO]    - ngram_por
+2026-05-22 06:32:50,718 [INFO]    - ngram_pos
+2026-05-22 06:32:50,718 [INFO]    - ngram_post
+2026-05-22 06:32:50,718 [INFO]    - ngram_press
+2026-05-22 06:32:50,718 [INFO]    - ngram_re
+2026-05-22 06:32:50,718 [INFO]    - ngram_rep
+2026-05-22 06:32:50,718 [INFO]    - ngram_report
+2026-05-22 06:32:50,718 [INFO]    - ngram_rg
+2026-05-22 06:32:50,718 [INFO]    - ngram_th
+2026-05-22 06:32:50,718 [INFO]    - ngram_the
+2026-05-22 06:32:50,718 [INFO]    - ngram_ti
+2026-05-22 06:32:50,718 [INFO]    - ngram_tic
+2026-05-22 06:32:50,719 [INFO]    - ngram_tim
+2026-05-22 06:32:50,719 [INFO]    - ngram_time
+2026-05-22 06:32:50,719 [INFO]    - ngram_tio
+2026-05-22 06:32:50,719 [INFO]    - ngram_trib
+2026-05-22 06:32:50,719 [INFO]    - ngram_wire
+2026-05-22 06:32:50,719 [INFO]    - ngram_ws
+2026-05-22 06:32:50,719 [INFO]    - ngram_ww
+2026-05-22 06:32:50,719 [INFO]    - ngram_www
+2026-05-22 06:32:50,719 [INFO]    - sentence_count
+2026-05-22 06:32:50,720 [INFO]    - social_media_link_count
+2026-05-22 06:32:50,720 [INFO]    - text_length
+2026-05-22 06:32:50,720 [INFO]    - text_to_html_ratio
+2026-05-22 06:32:50,720 [INFO]    - traffic_high_traffic
+2026-05-22 06:32:50,720 [INFO]    - traffic_medium_traffic
+2026-05-22 06:32:50,720 [INFO]    - traffic_minimal_traffic
+2026-05-22 06:32:50,720 [INFO]    - traffic_unknown
+2026-05-22 06:32:50,720 [INFO]    - word_count
+2026-05-22 06:32:50,743 [INFO] 
+============================================================
+2026-05-22 06:32:50,743 [INFO] EXPERIMENT (per-fold SelectKBest): Ablation_PureStructural
+2026-05-22 06:32:50,743 [INFO] ============================================================
+2026-05-22 06:32:50,743 [INFO] Samples: 3942, Candidate features: 82
+2026-05-22 06:32:50,761 [INFO] Feature engineering: 82 -> 105 features (+23 derived)
+2026-05-22 06:32:50,764 [INFO] Classes: {'high credibility': np.int64(3232), 'low credibility': np.int64(170), 'medium credibility': np.int64(540)}
+2026-05-22 06:32:50,765 [INFO] After feature engineering: 105 candidate features
+2026-05-22 06:32:50,765 [INFO] Per-fold SelectKBest target: k = 80
+2026-05-22 06:32:50,765 [INFO] 
+  Tuning RF with Optuna (50 trials, per-fold SelectKBest inside each trial)...
+2026-05-22 06:35:20,211 [INFO]   Best RF params: {'n_estimators': 550, 'max_depth': 36, 'min_samples_split': 6, 'min_samples_leaf': 1, 'max_features': 0.5202030427522455} (CV score: 0.5015)
+2026-05-22 06:35:20,211 [INFO]   Tuning XGB with Optuna (50 trials, per-fold SelectKBest inside each trial)...
+2026-05-22 06:36:59,869 [INFO]   Best XGB params: {'n_estimators': 600, 'max_depth': 3, 'learning_rate': 0.2652261985899886, 'subsample': 0.9162213204002109, 'colsample_bytree': 0.44863737747479326, 'min_child_weight': 2, 'gamma': 0.18340450985343382, 'reg_alpha': 5.472429642032198e-06, 'reg_lambda': 0.00052821153945323} (CV score: 0.5381)
+2026-05-22 06:36:59,870 [INFO] 
+  Running: RF_no_balance...
+2026-05-22 06:37:05,757 [INFO]     Macro F1: 0.4905 (+/- 0.0382)
+2026-05-22 06:37:05,757 [INFO]     high F1: 0.9067
+2026-05-22 06:37:05,758 [INFO]     low F1: 0.3182
+2026-05-22 06:37:05,758 [INFO]     medium F1: 0.2529
+2026-05-22 06:37:05,902 [INFO] 
+  Running: XGB_no_balance...
+2026-05-22 06:37:08,305 [INFO]     Macro F1: 0.5407 (+/- 0.0316)
+2026-05-22 06:37:08,305 [INFO]     high F1: 0.9061
+2026-05-22 06:37:08,305 [INFO]     low F1: 0.3644
+2026-05-22 06:37:08,305 [INFO]     medium F1: 0.3551
+2026-05-22 06:37:08,455 [INFO] 
+  Running: RF_SMOTE...
+2026-05-22 06:37:24,940 [INFO]     Macro F1: 0.5588 (+/- 0.0331)
+2026-05-22 06:37:24,940 [INFO]     high F1: 0.8901
+2026-05-22 06:37:24,940 [INFO]     low F1: 0.3663
+2026-05-22 06:37:24,940 [INFO]     medium F1: 0.4205
+2026-05-22 06:37:25,072 [INFO] 
+  Running: XGB_SMOTE...
+2026-05-22 06:37:30,039 [INFO]     Macro F1: 0.5401 (+/- 0.0281)
+2026-05-22 06:37:30,039 [INFO]     high F1: 0.8910
+2026-05-22 06:37:30,039 [INFO]     low F1: 0.3772
+2026-05-22 06:37:30,039 [INFO]     medium F1: 0.3522
+2026-05-22 06:37:30,190 [INFO] 
+  Running: RF_class_weights...
+2026-05-22 06:37:35,845 [INFO]     Macro F1: 0.4976 (+/- 0.0482)
+2026-05-22 06:37:35,846 [INFO]     high F1: 0.9026
+2026-05-22 06:37:35,846 [INFO]     low F1: 0.3725
+2026-05-22 06:37:35,846 [INFO]     medium F1: 0.2266
+2026-05-22 06:37:35,972 [INFO] 
+  Running: XGB_class_weights...
+2026-05-22 06:37:38,684 [INFO]     Macro F1: 0.5525 (+/- 0.0364)
+2026-05-22 06:37:38,684 [INFO]     high F1: 0.8821
+2026-05-22 06:37:38,684 [INFO]     low F1: 0.3896
+2026-05-22 06:37:38,684 [INFO]     medium F1: 0.3898
+2026-05-22 06:37:38,833 [INFO] 
+  Running: RF_SMOTE_weights...
+2026-05-22 06:40:07,281 [INFO]     Macro F1: 0.5588 (+/- 0.0331)
+2026-05-22 06:40:07,281 [INFO]     high F1: 0.8901
+2026-05-22 06:40:07,281 [INFO]     low F1: 0.3663
+2026-05-22 06:40:07,281 [INFO]     medium F1: 0.4205
+2026-05-22 06:40:07,417 [INFO] 
+  Running: XGB_SMOTE_weights...
+2026-05-22 06:40:12,771 [INFO]     Macro F1: 0.5580 (+/- 0.0168)
+2026-05-22 06:40:12,772 [INFO]     high F1: 0.8729
+2026-05-22 06:40:12,772 [INFO]     low F1: 0.3787
+2026-05-22 06:40:12,772 [INFO]     medium F1: 0.4225
+2026-05-22 06:40:12,947 [INFO] 
+  Feature-selection stability (Ablation_PureStructural): 68 always, 24 sometimes, 13 never selected
+2026-05-22 06:40:12,949 [INFO] 
+  Running: Stacking (RF+XGB meta-learner)...
+2026-05-22 06:40:36,475 [INFO]     Macro F1: 0.5540
+2026-05-22 06:40:36,475 [INFO]     high F1: 0.8974
+2026-05-22 06:40:36,475 [INFO]     low F1: 0.3718
+2026-05-22 06:40:36,476 [INFO]     medium F1: 0.3928
+2026-05-22 06:40:36,782 [INFO] Saved tier-comparison figure -> C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5_ablation\ablation_tier_comparison.png
+2026-05-22 06:40:36,782 [INFO] 
+================================================================================
+2026-05-22 06:40:36,782 [INFO] ABLATION SUMMARY (XGB SMOTE + class weights, enriched dataset)
+2026-05-22 06:40:36,782 [INFO] ================================================================================
+2026-05-22 06:40:36,788 [INFO] 
+          tier  n_features_input  macro_f1  macro_f1_std  f1_high  f1_medium  f1_low  accuracy
+        NoMBFC               164    0.5507        0.0210   0.8870     0.3996  0.3683    0.7973
+PureStructural                82    0.5580        0.0168   0.8729     0.4225  0.3787    0.7806
+
+2026-05-22 06:40:36,788 [INFO] Reproducibility check: the 'Full' tier replays the enriched XGB_SMOTE_weights configuration from model_comparison_v4.py and should match its reported macro F1 (around 0.594) within rounding. If it doesn't, something in the pipeline has drifted.
+2026-05-22 06:40:36,789 [INFO] 
+All results saved to: C:\Users\Wilbe\OneDrive\Desktop\profiling-data-Copy(1)\thesis_output\model_results_v5_ablation
+
